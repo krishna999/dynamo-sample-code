@@ -214,3 +214,18 @@ def parsejson_inorder_perpage(response,thisPage):
         final_frac_stages += frac_stages
         print(f"Page {thisPage} parsed")
         
+###
+
+def _getMetadataFromFullPath(fullFilePath):
+    metadata={}
+    fileName = os.path.basename(fullFilePath)
+    wellName = fileName.rstrip().rsplit('(')[0].rstrip()
+    fileDate = fileName.rsplit('(')[1].rsplit(')')[0]
+    metadata = { 
+                    'FullFilePath': fullFilePath, 
+                    'FileName': fileName, 
+                    'WellName': wellName,
+                    'FileDate': fileDate
+               }
+               
+    return metadata
